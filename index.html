@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhamad Nasri - Mobile Developer Portfolio</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FAF8F5;
+            --dark: #1A1A1A;
+            --accent: #FF6B4A;
+            --accent-light: #FFB8A8;
+            --gray: #6B6B6B;
+            --light-gray: #E8E6E3;
+            --border: #D4D2CF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4rem;
+        }
+
+        /* Elegant Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 248, 245, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--dark);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--dark);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        /* Hero Section - Premium Layout */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 8rem;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            padding: 4rem 0;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-tag {
+            display: inline-block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .hero-tag::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2rem;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+            font-weight: 400;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .hero .student-info {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .lecturer-info {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+        }
+
+        .hero .lecturer-info strong {
+            color: var(--dark);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #E55A3A;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 74, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--dark);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Image - Elegant Frame */
+        .hero-image {
+            position: relative;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .image-frame {
+            position: relative;
+            aspect-ratio: 3/4;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.08),
+                0 0 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-accent {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: var(--accent-light);
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .accent-1 {
+            top: -50px;
+            right: -50px;
+        }
+
+        .accent-2 {
+            bottom: -50px;
+            left: -50px;
+        }
+
+        /* Elegant Section Layout */
+        section {
+            padding: 8rem 0;
+        }
+
+        .section-header {
+            max-width: 700px;
+            margin: 0 auto 6rem;
+            text-align: center;
+        }
+
+        .section-tag {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+            font-weight: 400;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* About Section - Two Column */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .about-text h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: -0.5px;
+            font-weight: 400;
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .info-item {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-item strong {
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .info-item span {
+            font-size: 1.1rem;
+            color: var(--dark);
+            display: block;
+        }
+
+        .info-item:hover {
+            padding-left: 1rem;
+        }
+
+        /* Project Showcase - Magazine Style */
+        .project-showcase {
+            background: white;
+            border-radius: 16px;
+            padding: 4rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+            margin-bottom: 4rem;
+        }
+
+        .project-header {
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--light-gray);
+            padding-bottom: 2rem;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .project-header h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+            font-weight: 400;
+        }
+
+        .project-description {
+            font-size: 1.15rem;
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+
+        .project-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Reflection Cards - Editorial Style */
+        .reflection-grid {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .reflection-card {
+            background: white;
+            padding: 4rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+        }
+
+        .reflection-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            letter-spacing: -0.5px;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .reflection-card h4 {
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .reflection-card p {
+            font-size: 1.05rem;
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .reflection-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .reflection-card ul li {
+            font-size: 1.05rem;
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .reflection-card ul li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .reflection-card ul li strong {
+            color: var(--dark);
+        }
+
+        /* Gallery Section - Editorial Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item.large {
+            grid-column: span 2;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            background: var(--light-gray);
+            position: relative;
+        }
+
+        .gallery-item.large .gallery-image {
+            aspect-ratio: 16/9;
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-image img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            padding: 2rem;
+        }
+
+        .gallery-caption h4 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .gallery-caption p {
+            font-size: 0.95rem;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Contact Section - Minimal */
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content>p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 4rem;
+            line-height: 1.8;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 12px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-item .icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item strong {
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item span {
+            font-size: 1rem;
+            color: var(--dark);
+        }
+
+        /* Footer - Minimal */
+        footer {
+            border-top: 1px solid var(--light-gray);
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 6rem;
+        }
+
+        footer p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Divider */
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: var(--light-gray);
+            margin: 6rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+
+            .container,
+            .nav-container {
+                padding: 0 2rem;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .project-features {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-item.large {
+                grid-column: span 1;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container,
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .project-showcase,
+            .reflection-card {
+                padding: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item.large {
+                grid-column: span 1;
+            }
+
+            section {
+                padding: 5rem 0;
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Nasri</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#project">Project</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#reflection">Reflection</a></li>
+                <li><a href="#conclusion">Conclusion</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-tag">Mobile Developer</div>
+                <h1>Muhamad Nasri</h1>
+                <p class="subtitle">Flutter & Kotlin Developer specializing in mobile applications.</p>
+                <p class="student-info">2024855524 · UiTM Shah Alam</p>
+                <p class="lecturer-info">Lecturer: <strong>Dr. Zan Azma Binti Nasruddin</strong></p>
+                <div class="cta-buttons">
+                    <a href="#project" class="btn btn-primary">View Work</a>
+                    <a href="#contact" class="btn btn-secondary">Contact</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-accent accent-1"></div>
+                <div class="image-accent accent-2"></div>
+                <div class="image-frame">
+                    <img src="assets/images/nasri.jpg" alt="Muhamad Nasri">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="fade-in">
+            <div class="section-header">
+                <div class="section-tag">Introduction</div>
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Mobile developer focused on creating intuitive applications</p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Hello, I'm Nasri</h3>
+                    <p>
+                        Mobile application developer with expertise in Flutter/Dart and Kotlin. Currently pursuing Bachelor of Information Technology at UiTM Shah Alam.
+                    </p>
+                    <p>
+                        Passionate about creating user-centric mobile solutions with clean architecture and thoughtful UI/UX design.
+                    </p>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>University</strong>
+                        <span>UiTM Shah Alam</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Student ID</strong>
+                        <span>2024855524</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Program</strong>
+                        <span>Bachelor of Information Technology</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Lecturer</strong>
+                        <span>Dr. Zan Azma Binti Nasruddin</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Specialization</strong>
+                        <span>Mobile Development</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Tech Stack</strong>
+                        <span>Flutter · Kotlin · Dart</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Project Section -->
+        <section id="project" class="fade-in">
+            <div class="section-header">
+                <div class="section-tag">Featured Work</div>
+                <h2 class="section-title">Smart Helmet HUD</h2>
+                <p class="section-subtitle">Mobile application for motorcycle safety</p>
+            </div>
+
+            <div class="project-showcase">
+                <div class="project-header">
+                    <div class="project-meta">
+                        <span>Mobile App</span>
+                        <span>IoT Integration</span>
+                        <span>2024</span>
+                    </div>
+                    <h3>Enhancing Rider Safety</h3>
+                    <p class="project-description">
+                        Mobile application providing critical information through a heads-up display system. Features Bluetooth connectivity for navigation and ride information without distraction.
+                    </p>
+                </div>
+
+                <div class="project-features">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔗</div>
+                        <h4>Bluetooth Connectivity</h4>
+                        <p>Seamless pairing with helmet hardware</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h4>Intuitive Interface</h4>
+                        <p>Minimal distraction, maximum usability</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎮</div>
+                        <h4>HUD Controls</h4>
+                        <p>Real-time navigation display</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔋</div>
+                        <h4>Power Management</h4>
+                        <p>Optimized battery performance</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🗺️</div>
+                        <h4>Navigation</h4>
+                        <p>Turn-by-turn directions on visor</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚙️</div>
+                        <h4>Customization</h4>
+                        <p>Personalized display settings</p>
+                    </div>
+                </div>
+
+                <a href="https://www.figma.com/design/ysFHEMYGw5tjFXUo1vUXwK/SMART-HELMET-HUD---MOBILE-UI?node-id=0-1&t=GxRIW5PkTtSpUTpQ-1"
+                    target="_blank" class="btn btn-primary">View Design System</a>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="fade-in">
+            <div class="section-header">
+                <div class="section-tag">Gallery</div>
+                <h2 class="section-title">Project Showcase</h2>
+                <p class="section-subtitle">Development journey highlights</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="assets/images/group-discussion.jpeg" alt="Team collaboration">
+                    </div>
+                    <div class="gallery-caption">
+                        <h4>Team Collaboration</h4>
+                        <p>Interface design session</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="assets/images/helmet.jpeg" alt="Smart Helmet">
+                    </div>
+                    <div class="gallery-caption">
+                        <h4>Smart Helmet HUD</h4>
+                        <p>Display system prototype</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="assets/images/fishbone.jpeg" alt="Planning">
+                    </div>
+                    <div class="gallery-caption">
+                        <h4>Project Planning</h4>
+                        <p>Analysis diagram</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item large">
+                    <div class="gallery-image">
+                        <img src="assets/images/nasri.jpg" alt="Developer photo">
+                    </div>
+                    <div class="gallery-caption">
+                        <h4>Muhamad Nasri</h4>
+                        <p>Flutter & Kotlin Developer</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="assets/images/group-discussion.jpeg" alt="Discussion">
+                    </div>
+                    <div class="gallery-caption">
+                        <h4>Design Discussion</h4>
+                        <p>Team brainstorming</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="assets/images/helmet.jpeg" alt="Prototype">
+                    </div>
+                    <div class="gallery-caption">
+                        <h4>Prototype Demo</h4>
+                        <p>HUD functionality test</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Reflection Section -->
+        <section id="reflection" class="fade-in">
+            <div class="section-header">
+                <div class="section-tag">Insights</div>
+                <h2 class="section-title">Project Reflection</h2>
+                <p class="section-subtitle">Key learnings from the development journey</p>
+            </div>
+
+            <div class="reflection-grid">
+                <div class="reflection-card">
+                    <h3>Self Reflection on Learning</h3>
+                    <p>
+                        Through this group project, I developed a deeper understanding of how to manage and coordinate a complex, design-oriented assignment that integrates both hardware-related concepts and digital interfaces. The Smart Helmet HUD project provided valuable insight into how multiple functionalities can be systematically conceptualized and combined into a single, cohesive product. This experience strengthened my awareness of how technology-driven solutions can be designed to address real-world concerns related to safety, efficiency, and user experience.
+                    </p>
+                    <p>
+                        In addition to enhancing my technical and design knowledge, this project significantly contributed to my development of essential project management skills. As I was responsible for delegating tasks and monitoring overall progress, I learned how to effectively decompose a large-scale project into smaller, achievable components and distribute responsibilities equitably among team members. This role highlighted the importance of careful planning, accountability, and structured workflows in ensuring that all aspects of the project progressed in an organized and timely manner.
+                    </p>
+                    <p>
+                        Furthermore, the project emphasized the importance of collaboration and adaptability in a group-based learning environment. By working closely with my peers during the design process using Figma, I learned how to align individual ideas with shared project objectives. I also gained experience in accepting constructive feedback and ensuring that the final outcome accurately reflected the intended features of the smart helmet. Overall, this project enhanced my ability to learn through hands-on experience and teamwork, which then reinforces the value of practical application alongside theoretical knowledge.
+                    </p>
+                </div>
+
+                <div class="reflection-card">
+                    <h3>Self Reflection on Project Goals</h3>
+                    <p>
+                        I believe that from this project, I consistently monitored progress by tracking task completion and ensuring adherence to the established project timeline. I conducted regular check-ins with group members to evaluate our progress toward the project objectives and to identify areas that required adjustment. I ensure that there is a consistent and steady advancement of the Figma designs and prototype development, so that the project is progressing in the intended direction.
+                    </p>
+                    <p>
+                        Several key factors contributed to the effective achievement of project goals. I ensured clear and structured task delegation so that each group member understood their responsibilities, which minimized confusion and prevented overlap in workload. In addition, I maintained a well-organized timeline that helped the team remain focused and motivated, particularly during periods of increased academic workload from other subjects. The collaborative design process further supported goal attainment by aligning the smart helmet's features with its intended functionality and user requirements.
+                    </p>
+                    <p>
+                        Despite these efforts, the project presented challenges that occasionally affected progress. Balancing multiple academic commitments while working full time during both daytime and nighttime hours limited opportunities for communication and coordination. However, the strong sense of shared responsibility within the group encouraged us to remain committed and disciplined. Successfully navigating these challenges reinforced my understanding of the importance of effective time management and teamwork in achieving project goals.
+                    </p>
+                </div>
+
+                <div class="reflection-card">
+                    <h3>Self Reflection on Group Dynamics</h3>
+                    <p>
+                        Group dynamics contributed significantly to the overall success of this group assignment. My peers demonstrated strong responsibility by completing their assigned tasks and actively participating in discussions and design decisions. Their consistent involvement supported my role in delegating tasks and monitoring the project timeline, as each member showed commitment toward producing quality outcomes.
+                    </p>
+                    <p>
+                        During periods of increased workload and time pressure, I faced challenges in maintaining consistent communication and coordination. In these situations, my group members offered encouragement and demonstrated understanding, which helped sustain motivation and focus. Open and respectful communication within the team enabled us to identify issues early and implement necessary adjustments in a timely manner. This collaborative approach played an important role in maintaining steady progress during demanding phases.
+                    </p>
+                    <p>
+                        This experience emphasized the importance of trust, accountability, and mutual respect within a team setting. By distributing tasks fairly and maintaining transparency in expectations, the group worked efficiently and avoided significant conflicts. The experience strengthened my appreciation for collaborative teamwork and highlighted how effective group dynamics can positively influence both the working process and the final project outcomes.
+                    </p>
+                </div>
+
+                <div class="reflection-card">
+                    <h3>Self Reflection on Critical Thinking & Other Reflections</h3>
+                    <p>
+                        This project allowed me to demonstrate key strengths in organization and the ability to oversee multiple aspects of a group assignment simultaneously. I managed project timelines effectively, delegated tasks strategically, and ensured that both the design outputs and written documentation complied with the required academic and formatting standards. These responsibilities enabled me to maintain a structured workflow and contributed to the timely completion of all project deliverables.
+                    </p>
+                    <p>
+                        At the same time, the experience increased my awareness of certain limitations, particularly in maintaining consistent communication when multiple commitments overlapped. Managing full-time work alongside several academic responsibilities occasionally affected my ability to respond promptly or engage fully in discussions. This realization encouraged me to critically evaluate my current time management and communication practices and to identify areas that require further improvement.
+                    </p>
+                    <p>
+                        The project also provided a strong sense of personal satisfaction, particularly in observing how an initial concept developed into a well-structured and functional design. Collaborating with group members and ensuring alignment between proposed features and design outcomes proved both engaging and rewarding. Witnessing the gradual transformation of ideas into a coherent prototype reinforced my appreciation for collaborative design processes.
+                    </p>
+                    <p>
+                        In addition, the experience highlighted areas that require immediate attention, particularly in managing stress and balancing workload demands. Coordinating multiple academic projects while maintaining full-time employment presented significant challenges and emphasized the importance of effective planning and prioritization. Strengthening these skills will enable me to perform more efficiently and sustainably in future group-based assignments.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Conclusion Section -->
+        <section id="conclusion" class="fade-in">
+            <div class="section-header">
+                <div class="section-tag">Final Thoughts</div>
+                <h2 class="section-title">Conclusion</h2>
+                <p class="section-subtitle">Reflections on the project experience</p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text" style="grid-column: 1 / -1; max-width: 900px; margin: 0 auto;">
+                    <p>
+                        In conclusion, this project provided a valuable opportunity to integrate theoretical knowledge with practical application while developing both technical and professional skills. The experience strengthened my understanding of project coordination, collaborative design, and reflective learning within a group setting. I hope to receive continued guidance and deeper exposure to similar projects, as this subject has proven to be both challenging and intellectually stimulating, contributing meaningfully to my academic and personal development.
+                    </p>
+                    <p>
+                        I would like to express my sincere gratitude to Dr. Zan Azma for her guidance, support, and constructive feedback throughout this course. Her direction played an important role in helping us understand project requirements, refine our work, and remain focused on achieving meaningful learning outcomes. The knowledge and guidance provided have significantly enhanced my learning experience, and I am grateful for the opportunity to grow academically under her supervision.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Contact Section -->
+        <section id="contact" class="fade-in">
+            <div class="section-header">
+                <div class="section-tag">Contact</div>
+                <h2 class="section-title">Get in Touch</h2>
+                <p class="section-subtitle">Open to new projects and opportunities</p>
+            </div>
+
+            <div class="contact-content">
+                <p>
+                    Open to collaborations and project discussions. Feel free to reach out.
+                </p>
+
+                <div class="contact-grid">
+                    <a href="mailto:nasri@graduate.utm.my" class="contact-item">
+                        <div class="icon">✉️</div>
+                        <strong>Email</strong>
+                        <span>2024855524@student.uitm.edu.my</span>
+                    </a>
+
+                    <a href="tel:+60111655467" class="contact-item">
+                        <div class="icon">📱</div>
+                        <strong>Phone</strong>
+                        <span>+60 12822 1068</span>
+                    </a>
+
+                    <div class="contact-item">
+                        <div class="icon">📍</div>
+                        <strong>Location</strong>
+                        <span>Shah Alam, Malaysia</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Muhamad Nasri Bin Rusni. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Active nav on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section[id]').forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
